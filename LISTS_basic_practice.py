@@ -114,8 +114,7 @@ for num in positive_array:
 # Trivial (just use 'random.sample()' !!!)
 
 
-
-
+# Exercise 124: Line of Best Fit
 
 
 
