@@ -115,6 +115,12 @@ for num in positive_array:
 
 
 # Exercise 124: Line of Best Fit
+# Trivial
+
+# Exercise 127: Check if List is Sorted
+# Trivial
+
+
 
 
 
