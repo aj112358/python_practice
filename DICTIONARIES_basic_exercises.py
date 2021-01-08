@@ -21,3 +21,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+# Exercise 140: Postal Code
+# Trivial

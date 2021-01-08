@@ -1,4 +1,5 @@
 # This program converts a text message into the buttons you would press on an old cell phone.
+# NOTE: This code still needs to be edited!!!!
 # Created By: AJ Singh
 # Date: Jan 8, 2021
 
