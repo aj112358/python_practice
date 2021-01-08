@@ -68,12 +68,6 @@ if __name__ == "__main__":
 # Exercise 95: Capitalize It
 # Trivial
 
-# Exercise 96: Does a String Represent an Integer
-# Trivial
-
-# Exercise 97: Operator Precedence
-# Trivial
-
 # Exercise 98: Is a Number Prime?
 # Skip (look at number theory primality tests)
 

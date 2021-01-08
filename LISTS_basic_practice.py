@@ -120,6 +120,9 @@ for num in positive_array:
 # Exercise 127: Check if List is Sorted
 # Trivial
 
+# Exercise 128: Count the Elements
+# Trivial
+
 
 
 
