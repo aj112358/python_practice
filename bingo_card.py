@@ -3,13 +3,15 @@
 # Date: Jan 8, 2021
 
 from random import randint
-from pprint import pprint
 from tabulate import tabulate
 
 COLUMN_NAMES = list("BINGO")
 
 
-def bingo_card():
+# Generate a single bingo card.
+# @params: None
+# @return: Dictionary containing bingo card.
+def bingo_card() -> dict:
     """Create a bingo card. Duh!"""
 
     card = {column:[] for column in COLUMN_NAMES}
@@ -30,6 +32,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-
-
