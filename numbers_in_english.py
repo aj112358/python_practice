@@ -2,63 +2,93 @@
 # Created By: AJ Singh
 # Date: Jun 8, 2021
 
-
-DIGITS = {1: "one",
-           2: "two",
-           3: "three",
-           4: "four",
-           5: "five",
-           6: "six",
-           7: "seven",
-           8: "eight",
-           9: "nine"}
-
-NUMBERS = {1: "eleven",
-           2: "twelve",
-           3: "thirteen",
-           4: "fourteen",
-           5: "fifteen",
-           6: "sixteen",
-           7: "seventeen",
-           8: "eighteen",
-           9: "nineteen"}
-
-TENS = {1: "ten",
-        2: "twenty",
-        3: "thirty",
-        4: "forty",
-        5: "fifty",
-        6: "sixty",
-        7: "seventy",
-        8: "eighty",
-        9: "ninety"}
+# NOTE: This code works, but could do with some editing/refactoring.
 
 
+DIGITS = {'0': "zero",
+          '1': "one",
+          '2': "two",
+          '3': "three",
+          '4': "four",
+          '5': "five",
+          '6': "six",
+          '7': "seven",
+          '8': "eight",
+          '9': "nine"}
+
+DOUBLES = {'10': "ten",
+           '11': "eleven",
+           '12': "twelve",
+           '13': "thirteen",
+           '14': "fourteen",
+           '15': "fifteen",
+           '16': "sixteen",
+           '17': "seventeen",
+           '18': "eighteen",
+           '19': "nineteen"}
+
+TENS = {'00': "",
+        '10': "ten",
+        '20': "twenty",
+        '30': "thirty",
+        '40': "forty",
+        '50': "fifty",
+        '60': "sixty",
+        '70': "seventy",
+        '80': "eighty",
+        '90': "ninety"}
+
+HUNDREDS = {'100': "one hundred",
+            '200': "two hundred",
+            '300': "three hundred",
+            '400': "four hundred",
+            '500': "five hundred",
+            '600': "six hundred",
+            '700': "seven hundred",
+            '800': "eight hundred",
+            '900': "nine hundred"}
 
 
-def to_english(num: int) -> str:
+def to_english(num: str) -> str:
     """Convert a number to its equivalent English translation."""
 
-    string = str(num)
-    if len(str(num)) == 1:
-        if num == 0:
-            return "zero"
-        return DIGITS[num]
+    answer = ""
+    size = len(num)
 
-    if len(str(num)) == 2:
-        if string[-1] == '0':
-            return TENS[int(string[0])]
-        elif string[0] == '1':
-            return NUMBERS[int(string[1])]
-        else:
-            return TENS[int(string[0])] + " " + DIGITS[int(string[1])]
+    if size >= 1:
 
-    if len(str(num)) == 3:
+        if num in DIGITS:
+            return DIGITS[num]
+
+        else:  # size >= 2:
+
+            if num[-2:] in DOUBLES:
+                answer = DOUBLES[num[-2:]]
+            elif num[-2:] in TENS:
+                answer = TENS[num[-2:]]
+            else:
+                answer = TENS[num[-2]+'0'] + " " + DIGITS[num[-1]]
+
+            if size == 3:
+
+                if num in HUNDREDS:
+                    return HUNDREDS[num]
+                else:
+                    answer = DIGITS[num[-3]] + " hundred " + answer
+
+    return answer
 
 
 
-# number = 20
-# print(to_english(number))
+# tests = ['0', '1', '9', '10', '11', '19', '20', '21', '89', '90', '91', '99', '100', '101', '110', '111', '119', '120', '121']
+# for test in tests:
+#     print(to_english(test))
 
-for _ in range(100):
-    print(to_english(_))
+for _ in range(1000):
+    print(_, to_english(str(_)))
+
+# DONT WORK: 100
+
+# while True:
+#     n = input("\nEnter a number: ")
+#     print(to_english(n))

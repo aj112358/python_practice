@@ -25,3 +25,7 @@ if __name__ == "__main__":
 
 # Exercise 140: Postal Code
 # Trivial
+
+# Exercise 145: Scrabble Scores
+# Trivial
+
