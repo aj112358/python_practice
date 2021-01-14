@@ -2,7 +2,8 @@
 
 
 # C:\Users\AJ\PycharmProjects\python_practice\only_the_words.py
-from ..only_the_words import extract_words
+# from ..only_the_words import extract_words
+from only_the_words import extract_words
 import sys
 
 
@@ -22,19 +23,33 @@ def word_frequency(sentences):
         words = extract_words(_)
 
         for word in words:
-            if word in frequency:
-                frequency[word] += 1
+            if word.lower() in frequency:
+                frequency[word.lower()] += 1
             else:
-                frequency[word] = 1
+                frequency[word.lower()] = 1
 
     return frequency
+
+
+def print_results(freq: dict):
+
+    max_freq = max(freq.values())
+    most_freq_words = []
+
+    for word in freq:
+        if freq[word] == max_freq:
+            most_freq_words.append(word)
+
+    print(f"\nThe most frequent word(s) occur {max_freq} times.")
+    print("\nThese word(s) are:\n")
+    print(*most_freq_words, sep="\n")
 
 
 def main():
     file_obj = open_file()
     sentences = file_obj.readlines()
     freq = word_frequency(sentences)
-    print(freq)
+    print_results(freq)
 
 
 main()
