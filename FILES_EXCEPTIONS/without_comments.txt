@@ -1,0 +1,6 @@
+print("Hello world")
+
+for _ in range(20):
+    print(_, end=" ") 
+
+x = 3

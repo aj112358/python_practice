@@ -1,0 +1,9 @@
+print("Hello world")
+
+# This is a for-loop.
+for _ in range(20):
+    print(_, end=" ") # Print random stuff.
+
+# This is a floating comment
+
+x = 3
