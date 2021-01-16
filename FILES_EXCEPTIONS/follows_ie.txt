@@ -225,7 +225,6 @@ arteriectasia
 arteriectasis
 arteriectopia
 Artie
-Asclepieion
 asiento
 asphyxied
 Asplenieae
@@ -342,7 +341,6 @@ besiegingly
 besognier
 Bessie
 bieberite
-Biedermeier
 bield
 bieldy
 bielectrolysis
@@ -497,7 +495,6 @@ cashierer
 cashierment
 Cassie
 cassie
-Cassiepeia
 Casziel
 catapultier
 catpiece
@@ -813,7 +810,6 @@ definiendum
 definiens
 degasifier
 dehumidifier
-deifier
 demicaponier
 demieagle
 demimentoniere
@@ -893,7 +889,6 @@ dietotherapy
 dietotoxic
 dietotoxicity
 dietrichite
-dietzeite
 diewise
 Dieyerie
 diezeugmenon
@@ -968,8 +963,6 @@ doughfaceism
 douzieme
 dovekie
 dowie
-Dowieism
-Dowieite
 downlie
 downlier
 draperied
@@ -1004,7 +997,10 @@ eerie
 Effie
 effodient
 Effodientia
-eightieth
+eidetic
+eidolic
+eisodic
+eisteddfodic
 elbowpiece
 electrifier
 electrolier
@@ -1177,7 +1173,6 @@ Fourierite
 fourrier
 frasier
 Freddie
-freieslebenite
 frenzied
 frenziedly
 fried
@@ -1196,7 +1191,6 @@ friendliwise
 friendly
 friendship
 frier
-frieseite
 Friesian
 Friesic
 Friesish
@@ -1247,8 +1241,6 @@ gastroparietal
 gaucherie
 gawsie
 gebbie
-geikielite
-geitjie
 Genevieve
 genie
 Geordie
@@ -1378,7 +1370,6 @@ heartgrief
 heavies
 heelpiece
 heezie
-Heinie
 hellier
 hemapoiesis
 hemapoietic
@@ -1511,7 +1502,6 @@ hurriedly
 hurriedness
 hurrier
 husbandfield
-hygieist
 hygienal
 hygiene
 hygienic
@@ -1721,7 +1711,6 @@ ladies
 lairdie
 lakie
 lambie
-lammergeier
 lamziekte
 langspiel
 Laramie
@@ -1729,7 +1718,6 @@ lardacein
 larmier
 lassie
 lassiehood
-lassieish
 Laurie
 lavaliere
 Lawrie
@@ -1829,7 +1817,6 @@ maggotpie
 magnifier
 magpie
 magpied
-magpieish
 Maidie
 maiefic
 maieutic
@@ -1871,7 +1858,6 @@ medievalistic
 medievalize
 medievally
 medjidie
-meinie
 memoried
 menagerie
 menthadiene
@@ -1949,7 +1935,6 @@ Mountie
 mouthpiece
 movie
 moviedom
-movieize
 movieland
 mowie
 moxieberry
@@ -1989,7 +1974,6 @@ naigie
 nanpie
 Napierian
 narceine
-Nasiei
 Natalie
 Nathaniel
 neckerchief
@@ -1997,7 +1981,6 @@ neckpiece
 necktie
 necktieless
 nectaried
-Neisserieae
 Nellie
 neomedievalism
 Neopieris
@@ -2016,10 +1999,8 @@ Niels
 nielsbohrium
 niepa
 Nierembergia
-Niersteiner
 Nietzschean
 Nietzscheanism
-Nietzscheism
 nieve
 nieveta
 nievling
@@ -2103,7 +2084,6 @@ Okie
 Oldfieldia
 Olivier
 Ollie
-Olympieion
 omnierudite
 omniessence
 omniparient
@@ -2476,7 +2456,6 @@ predietary
 prefriendly
 prefriendship
 pregrievance
-preinterview
 premedieval
 premedievalism
 premier
@@ -2685,7 +2664,6 @@ redient
 reediemadeasy
 Reggie
 reglorified
-reinterview
 relief
 reliefless
 relier
@@ -2839,7 +2817,6 @@ schlemiel
 schlieren
 schlieric
 Schoharie
-schriesheimite
 scorifier
 Scottie
 scrapie
@@ -3067,7 +3044,6 @@ speechifier
 sphenoparietal
 spied
 spiegel
-spiegeleisen
 spiel
 spieler
 spier
@@ -3427,7 +3403,6 @@ undeceiver
 undeceiving
 undecried
 undefied
-undeified
 undenied
 undeniedly
 underbrigadier
@@ -3646,7 +3621,6 @@ unreceivable
 unreceived
 unreceiving
 unrectified
-unreimbodied
 unrelievable
 unrelievableness
 unrelieved
@@ -3788,7 +3762,6 @@ Viennese
 vier
 vierling
 viertel
-viertelein
 Vietminh
 Vietnamese
 view
@@ -3829,7 +3802,6 @@ weariedly
 weariedness
 wearier
 Wedgie
-Weierstrassian
 whigmaleerie
 whilie
 whimsied
