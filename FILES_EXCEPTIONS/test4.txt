@@ -1,1 +1,10 @@
-abcda
+A spell checker can be a helpful tool for people who struggle to spell words correctly.
+In this exercise, you will write a program that reads a file and displays all of thewords
+in it that are misspelled. Misspelled words will be identified by checking each word
+in the file against a list of known words. Any words in the user’s file that do not
+appear in the list of known words will be reported as spelling mistakes.
+
+The user will provide the name of the file to check for spelling mistakes as a
+command line argument. Your program should display an appropriate error message
+if the command line argument is missing. An error message should also be displayed
+if your program is unable to open the user’s file.
