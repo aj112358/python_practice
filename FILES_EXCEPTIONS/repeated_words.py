@@ -44,5 +44,7 @@ def main():
 
     check_for_repeats(data)
 
+    file_obj.close()
+
 
 main()
