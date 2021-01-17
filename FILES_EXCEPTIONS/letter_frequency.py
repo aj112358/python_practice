@@ -19,6 +19,7 @@ def open_file():
         print("Unable to open file.")
 
 
+# Determine frequency of letters.
 def letter_frequency(words):
 
     freq = {}

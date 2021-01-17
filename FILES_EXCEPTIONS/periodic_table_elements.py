@@ -16,6 +16,7 @@ def get_data():
     return num_to_symbol_name, symbol_name_to_num
 
 
+# The main function.
 def main():
     num_keys, symbol_keys = get_data()
     user_input = input("What do you want to know about?  ").capitalize()
