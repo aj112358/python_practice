@@ -3,6 +3,11 @@
 # a particular total using a specific number of coins.
 # ASSUMPTION: We have: quarters, dimes, nickels, pennies
 
+
+# 0.25q + 0.1d + 0.05n + 0.01p = dollar
+# q+d+n+p = coins
+# 9 d + 4 n + 24 q = 100*dollar - coins
+
 from math import floor
 
 QUARTER = 0.25
@@ -25,7 +30,7 @@ def is_possible_change(dollar: float, coins: int):
     remaining = round(dollar % QUARTER, 2)
     if num_quarters == coins:
         return True
-    if remaining != 0:
+    else:
         return is_possible_change(remaining, coins - num_quarters)
 
     num_dimes = floor(remaining // DIME)
