@@ -10,44 +10,41 @@ DIME = 0.10
 NICKEL = 0.05
 PENNY = 0.01
 
-COINS = ['QUARTER', 'DIME', 'NICKEL', 'PENNY']
+COINS = "QUARTER,DIME,NICKEL,PENNY".split(",")
+change = {'QUARTER': 0, 'DIME': 0, 'NICKEL': 0, 'PENNY': 0}
 
 
 def is_possible_change(dollar: float, coins: int):
 
-    change = {'QUARTER': 0, 'DIME': 0, 'NICKEL': 0, 'PENNY': 0}
+    if coins == 0:
+        return True
+    if coins < 0:
+        return False
 
-    if dollar == 0.00:
-        if sum(change.values()) == coins:
-            return True
-        else:
-            return False
+    num_quarters = floor(dollar // QUARTER)
+    remaining = round(dollar % QUARTER, 2)
+    if num_quarters == coins:
+        return True
+    if remaining != 0:
+        return is_possible_change(remaining, coins - num_quarters)
 
-            num_quarters = floor(dollar // QUARTER)
-            change['QUARTER'] = num_quarters
-            dollar = dollar % QUARTER
+    num_dimes = floor(remaining // DIME)
+    remaining = round(dollar % DIME, 2)
+    if remaining != 0:
+        return is_possible_change(remaining, coins - num_dimes)
 
-            num_dimes = floor(dollar // DIME)
-            change['DIME'] = num_dimes
-            dollar = dollar % DIME
+    num_nickels = floor(remaining // NICKEL)
+    remaining = round(dollar % NICKEL, 2)
+    if remaining != 0:
+        return is_possible_change(remaining, coins - num_nickels)
 
-            num_nickels = floor(dollar // NICKEL)
-            change['NICKEL'] = num_nickels
-            dollar = dollar % NICKEL
+    num_pennies = floor(remaining // PENNY)
+    remaining = round(dollar % PENNY, 2)
+    if remaining != 0:
+        return is_possible_change(remaining, coins - num_pennies)
 
-            num_pennies = floor(dollar // PENNY)
-            change['PENNY'] = num_pennies
-            dollar = dollar % PENNY
-
-
-    return is_possible_change(round(dollar, 2), coins - num_quarters)
-
-
-
-
-
-
-
+    print("Hello")
+    # return False
 
 
 def main():
