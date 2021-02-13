@@ -67,6 +67,47 @@ class CreditCard:
         self._balance -= amount
 
 
+class PredatoryCreditCard(CreditCard):
+    """An extension to the CreditCard class that incorporates compound interest and fees."""
+
+    def __init__(self, customer, bank, account, limit, apr):
+        """Create a new predatory credit card instance.
+
+        The initial balance is zero.
+
+        @param customer:    the name of the customer
+        @param bank:        the name of the bank
+        @param account:     the account identification number
+        @param limit:       credit limit (in CAD)
+        @param apr:         annual percentage rate (as a decimal)
+        """
+
+        super().__init__(customer, bank, account, limit)  # Call original constructor for it's initializations.
+        self._apr = apr  # Have to manually initialize this ourselves.
+
+    def charge(self, price):
+        """Charge price to card, after checking for sufficient credit available.
+
+        @param price:   amount to charge to card
+        @return:        True -> processed; False -> denied (add $5 fee to balance)
+        """
+
+        success = super().charge(price)  # Call to inherited method 'charge' (from parent class)
+
+        # Checking if we need to add a $5 penalty for going over credit limit.
+        if not success:
+            self._balance += 5
+        return success  # That call expects a Boolean return value.
+
+    def process_month(self):
+        """Assess and apply monthly interest on outstanding balance."""
+
+        if self._balance > 0:
+            # If positive balance, convert APR to monthly multiplicative factor.
+            monthly_factor = pow(1+self._apr, 1/12)
+            self._balance *= monthly_factor
+
+
 if __name__ == "__main__":
     # Doing some quick manual error checking
 
@@ -92,3 +133,20 @@ if __name__ == "__main__":
         while wallet[c].get_balance() > 0:
             wallet[c].make_payment(100)
             print('New balance = ', wallet[c].get_balance())
+
+    print("*" * 50)
+    wallet.append(PredatoryCreditCard('Tina Turner', 'Las Vegas Finance', '1234 5678 4321 8765', 1500, 0.0825))
+
+    print('Customer = ', wallet[3].get_customer())
+    print('Limit = ', wallet[3].get_limit())
+    print('Balance = ', wallet[3].get_balance())
+
+    for val in range(1, 5):
+        wallet[3].charge(100*val)
+    print("New balance = ", wallet[3].get_balance())
+
+    wallet[3].charge(600)
+    print("Balance after overcharge = ", wallet[3].get_balance())
+
+    wallet[3].process_month()
+    print("Balance after added interest = ", wallet[3].get_balance())

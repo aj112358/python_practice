@@ -12,6 +12,7 @@ class MyRangeClass:
         """Initialize a Range instance.
 
         Has similar function signature to actual range class.
+        NOTE: If step<0, then make sure that start>stop
         """
 
         if step == 0:
