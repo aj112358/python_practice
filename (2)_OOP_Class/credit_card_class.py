@@ -8,6 +8,8 @@ Date: Feb 9, 2021
 class CreditCard:
     """A consumer credit card."""
 
+    __slots__ = "_customer", "_bank", "_account", "_limit", "_balance"
+
     def __init__(self, customer, bank, account, limit):
         """Create a new credit card instance.
 
@@ -70,6 +72,10 @@ class CreditCard:
 class PredatoryCreditCard(CreditCard):
     """An extension to the CreditCard class that incorporates compound interest and fees."""
 
+    __slots__ = "_apr"
+
+    OVERLIMIT_FEE = 5
+
     def __init__(self, customer, bank, account, limit, apr):
         """Create a new predatory credit card instance.
 
@@ -89,14 +95,14 @@ class PredatoryCreditCard(CreditCard):
         """Charge price to card, after checking for sufficient credit available.
 
         @param price:   amount to charge to card
-        @return:        True -> processed; False -> denied (add $5 fee to balance)
+        @return:        True -> processed; False -> denied (add overlimit fee to balance)
         """
 
         success = super().charge(price)  # Call to inherited method 'charge' (from parent class)
 
-        # Checking if we need to add a $5 penalty for going over credit limit.
+        # Checking if we need to add overlimit penalty for going over credit limit.
         if not success:
-            self._balance += 5
+            self._balance += PredatoryCreditCard.OVERLIMIT_FEE
         return success  # That call expects a Boolean return value.
 
     def process_month(self):
