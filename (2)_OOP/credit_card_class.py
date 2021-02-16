@@ -10,7 +10,7 @@ class CreditCard:
 
     __slots__ = "_customer", "_bank", "_account", "_limit", "_balance"
 
-    def __init__(self, customer, bank, account, limit):
+    def __init__(self, customer, bank, account, limit, balance=0):
         """Create a new credit card instance.
 
         The initial balance is zero.
@@ -25,7 +25,7 @@ class CreditCard:
         self._bank = bank
         self._account = account
         self._limit = limit
-        self._balance = 0
+        self._balance = balance
 
     def get_customer(self):
         """Return customer name."""
@@ -54,10 +54,13 @@ class CreditCard:
         @return:        True -> processed; False -> denied
         """
 
-        if price + self._balance > self._limit:
-            return False
-        self._balance += price
-        return True
+        try:
+            if price + self._balance > self._limit:
+                return False
+            self._balance += price
+            return True
+        except TypeError:
+            raise TypeError("Price must be a number.")
 
     def make_payment(self, amount):
         """Apply payment to credit card.
@@ -65,6 +68,12 @@ class CreditCard:
         @param amount:  amount to pay on card
         @return:        None
         """
+
+        if not isinstance(amount, (int, float)):
+            raise TypeError("Amount must be a number.")
+
+        if amount < 0:
+            raise ValueError("Amount must be a positive number.")
 
         self._balance -= amount
 
@@ -156,3 +165,15 @@ if __name__ == "__main__":
 
     wallet[3].process_month()
     print("Balance after added interest = ", wallet[3].get_balance())
+
+    print("*" * 50)
+
+    wallet.append(CreditCard("Vincent Valentine", 'Sector 7 Bank', "12345", 1000))
+    # wallet[4].charge("hello")
+    wallet[4].charge(500)
+    # wallet[4].make_payment("Hello")
+    wallet[4].make_payment(-250)
+
+    print('Customer = ', wallet[4].get_customer())
+    print('Limit = ', wallet[4].get_limit())
+    print('Balance = ', wallet[4].get_balance())
