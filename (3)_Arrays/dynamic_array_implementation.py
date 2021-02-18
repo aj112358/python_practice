@@ -51,3 +51,24 @@ class DynamicArray:
 
         self._A = B                 # Changing original identifier to reference new larger array.
         self._capacity = c          # Updating new capacity.
+
+    def insert(self, k, value):
+        """Insert 'value' at index k, shifting subsequent values rightward in the list.
+
+        For simplicity, we assume that 0 <= k <= n.
+        """
+
+        # Check if resizing is needed.
+        if self._n == self._capacity:
+            self._resize(2 * self._capacity)
+
+        # Shift values rightward, from index k and onward. Do the shifting from the end of the array going backwards.
+        for j in range(self._n, k, -1):
+            self._A[j] = self._A[j-1]
+
+        self._A[k] = value  # Assign 'value' to index k.
+        self._n += 1        # Increment number of actual elements in list.
+
+
+if __name__ == "__main__":
+    print("Hello world")
