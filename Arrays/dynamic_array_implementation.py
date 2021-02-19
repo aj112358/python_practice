@@ -69,6 +69,29 @@ class DynamicArray:
         self._A[k] = value  # Assign 'value' to index k.
         self._n += 1        # Increment number of actual elements in list.
 
+    def remove(self, value):
+        """Remove the first occurrence of 'value' from the list.
+
+        For simplicity, we do not consider re-sizing via shrinking of the underlying array.
+        """
+
+        # Iterate through array to look for 'value'.
+        for k in range(self._n):
+
+            # If 'value' is found (at index k).
+            if self._A[k] == value:
+
+                # Shift values leftward, starting from the front (index k).
+                for j in range(k, self._n - 1):
+                    self._A[j] = self._A[j+1]
+
+                self._A[self._n - 1] = None  # Set last element to 'None'.
+                self._n -= 1                 # Update actual number of elements.
+
+                return  # Exit the remove method.
+
+        raise ValueError("Value not found.")
+
 
 if __name__ == "__main__":
     print("Hello world")
