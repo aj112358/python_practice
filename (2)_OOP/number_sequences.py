@@ -129,3 +129,6 @@ if __name__ == "__main__":
 
     fibonacci = FibonacciProgression(first=0, second=1)
     fibonacci.print_progression(10)
+
+    fibonacci = FibonacciProgression(first=2, second=2)
+    fibonacci.print_progression(8)
