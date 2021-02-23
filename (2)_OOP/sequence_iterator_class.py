@@ -26,6 +26,24 @@ class SequenceIterator:
         """By convention, an iterator must return itself as an iterator."""
         return self
 
+    def __len__(self):
+        return len(self._seq)
+
+    def __eq__(self, other):
+        """Determine whether two sequences are equal element-wise."""
+
+        if len(self) != len(other):
+            return False
+
+        for k in range(len(self)):
+            if self._seq[k] != other[k]:
+                return False
+
+        return True
+
+
+
+
 
 if __name__ == "__main__":
     x = "a b c d".split()
@@ -51,3 +69,7 @@ if __name__ == "__main__":
     print(next(y_iterator))
     print(next(y_iterator))
     print(next(y_iterator))
+
+    print(len(x_iterator))
+
+    print(x_iterator == y_iterator)
