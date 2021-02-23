@@ -36,6 +36,39 @@ class Vector:
 
         return result
 
+    def __neg__(self):
+        """Returns the negative of a vector instance."""
+
+        result = Vector(len(self))  # New vector to store negative vector.
+        for j in range(len(self)):
+            result[j] = -self[j]
+
+        return result
+
+    def __radd__(self, other):
+        return self.__add__(other)
+
+    def __sub__(self, other):
+        """Return difference of two Vector instances.
+
+        Performs u-v as -(-u+v)
+        """
+        negative = -self
+        return -(negative.__add__(other))
+        # if len(self) != len(other):
+        #     raise ValueError("Vectors must be of same dimension.")
+        #
+        # result = Vector(len(self))  # New vector to store difference.
+        # for j in range(len(self)):
+        #     result[j] = self[j] - other[j]
+        #
+        # return result
+
+    def __rsub__(self, other):
+        """Computes v-u as (-u)+v."""
+        negative = self.__neg__()
+        return negative.__add__(other)
+
     def __eq__(self, other):
         """Return True if two Vector instances have same components."""
         return self._coords == other._coords
@@ -50,7 +83,13 @@ class Vector:
 
     # My addition for dot product
     def __mul__(self, other):
-        """Return dot product of two Vector instances."""
+        """Return either a scaled Vector instance, or the dot product of two Vector instances."""
+
+        if isinstance(other, (int, float)):
+            result = Vector(len(self))
+            for k in range(len(self)):
+                result[k] = self[k] * other
+            return result
 
         if len(self) != len(other):
             raise ValueError("Vectors must have same dimension.")
@@ -61,20 +100,23 @@ class Vector:
 
         return result
 
-    # My addition for scalar multiplication
-    def scale(self, c: (int, float)):
-        """Returns scalar multiple of a Vector instance."""
+    def __rmul__(self, other):
+        return self.__mul__(other)
 
-        if not isinstance(c, (int, float)):
-            raise TypeError("Scale value c must be a number.")
-
-        result = Vector(len(self))
-        for j in range(len(self)):
-            # self[j] *= c
-            result[j] = self[j] * c
-
-        return result
-        # return self
+    # # My addition for scalar multiplication
+    # def scale(self, c: (int, float)):
+    #     """Returns scalar multiple of a Vector instance."""
+    #
+    #     if not isinstance(c, (int, float)):
+    #         raise TypeError("Scale value c must be a number.")
+    #
+    #     result = Vector(len(self))
+    #     for j in range(len(self)):
+    #         # self[j] *= c
+    #         result[j] = self[j] * c
+    #
+    #     return result
+    #     # return self
 
 
 if __name__ == "__main__":
@@ -86,16 +128,33 @@ if __name__ == "__main__":
     print(u)
     print(v)
 
-    w = u + v
-    print(w)
+    # w = u + v
+    # print(w)
+    #
+    # print(u == v)
+    # print(u is v)
+    #
+    # print(u * v)
+    # print(v * u)
+    #
+    # print(u.scale(2.1))
+    # print(u)
+    #
+    # # print(v.scale("hello"))
+    #
+    # print(-u)
+    #
+    # print(u+[-1,-2,-3,-4])
+    # print([-1,-2,-3,-4]+u)
 
-    print(u == v)
-    print(u is v)
+    print()
+    print(u - [-1, -2, -3, -4])
+    print([-1,-2,-3,-4] - u)
 
+    print()
+    print(u * 3)
+    print(3 * u)
+
+    print()
     print(u * v)
     print(v * u)
-
-    print(u.scale(2.1))
-    print(u)
-
-    # print(v.scale("hello"))
