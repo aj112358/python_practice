@@ -45,19 +45,19 @@ class MyRangeClass:
         return self._start + k * self._step
 
     def __contains__(self, item):
-        """Better implementation."""
+        """Determine whether a range contains 'item'."""
 
-        if self._step == 1:
-            return self._start < item < self._length
+        # if self._step == 1:
+        #     return self._start < item < self._length
+        #
+        # if self._step == -1:
+        #     return self._start - self._length < item < self._start
 
-        if self._step == -1:
-            return self._start - self._length < item < self._start
-
-
-
+        return (item % self._step) == (self._start % self._step)
 
 
 if __name__ == "__main__":
+
     r = MyRangeClass(5)
     print(r)
 
@@ -65,8 +65,10 @@ if __name__ == "__main__":
         print(i, end=" - ")
 
     print()
-    for i in MyRangeClass(10, 0, -3):
+    x = MyRangeClass(5, 20, 3)
+    for i in x:
         print(i, end=" - ")
+    print(11 in x)
 
     p = MyRangeClass(start=10_000_000, stop=1, step=-1)
     print("\nLength of p:", len(p))
