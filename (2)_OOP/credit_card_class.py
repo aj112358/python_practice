@@ -81,11 +81,12 @@ class CreditCard:
 class PredatoryCreditCard(CreditCard):
     """An extension to the CreditCard class that incorporates compound interest and fees."""
 
-    __slots__ = "_apr"
+    __slots__ = "_apr", "_min_pay_percent"
 
     OVERLIMIT_FEE = 5
+    num_charges = 0
 
-    def __init__(self, customer, bank, account, limit, apr):
+    def __init__(self, customer, bank, account, limit, apr, min_pay_percent=0.05):
         """Create a new predatory credit card instance.
 
         The initial balance is zero.
@@ -95,10 +96,12 @@ class PredatoryCreditCard(CreditCard):
         @param account:     the account identification number
         @param limit:       credit limit (in CAD)
         @param apr:         annual percentage rate (as a decimal)
+        @param min_pay_percent: percentage for a minimum monthly payment (applied as a percentage of current balance)
         """
 
         super().__init__(customer, bank, account, limit)  # Call original constructor for it's initializations.
         self._apr = apr  # Have to manually initialize this ourselves.
+        self._min_pay_percent = min_pay_percent
 
     def charge(self, price):
         """Charge price to card, after checking for sufficient credit available.
@@ -112,15 +115,25 @@ class PredatoryCreditCard(CreditCard):
         # Checking if we need to add overlimit penalty for going over credit limit.
         if not success:
             self._balance += PredatoryCreditCard.OVERLIMIT_FEE
+        PredatoryCreditCard.num_charges += 1
         return success  # That call expects a Boolean return value.
 
     def process_month(self):
         """Assess and apply monthly interest on outstanding balance."""
 
+        # If positive balance, convert APR to monthly multiplicative factor.
         if self._balance > 0:
-            # If positive balance, convert APR to monthly multiplicative factor.
             monthly_factor = pow(1+self._apr, 1/12)
             self._balance *= monthly_factor
+
+        # If number of charges is at least 10, add $1 to balance (for over use).
+        if PredatoryCreditCard.num_charges >= 10:
+            self._balance += 1
+
+        # If minimum payment is not made, add a late fee to balance.
+        min_payment = round(self._min_pay_percent * self._balance, 2)
+        if True:
+            self._balance += min_payment
 
 
 if __name__ == "__main__":
@@ -172,7 +185,7 @@ if __name__ == "__main__":
     # wallet[4].charge("hello")
     wallet[4].charge(500)
     # wallet[4].make_payment("Hello")
-    wallet[4].make_payment(-250)
+    wallet[4].make_payment(250)
 
     print('Customer = ', wallet[4].get_customer())
     print('Limit = ', wallet[4].get_limit())
