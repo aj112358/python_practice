@@ -32,17 +32,22 @@ class SequenceIterator:
     def __eq__(self, other):
         """Determine whether two sequences are equal element-wise."""
 
-        if len(self) != len(other):
-            return False
+        # if len(self) != len(other):
+        #     return False
+        #
+        # for k in range(len(self)):
+        #     # if self.__next__() != other.__next__():
+        #     #     return False
+        #     if self._seq[k] != other._seq[k]:
+        #         return False
 
-        for k in range(len(self)):
-            if self._seq[k] != other[k]:
-                return False
+        # return True
 
-        return True
+        return self._seq == other._seq
 
-
-
+    def __lt__(self, other):
+        """Determine whether one sequence is less than another lexicographically."""
+        return self._seq < other._seq
 
 
 if __name__ == "__main__":
@@ -72,4 +77,11 @@ if __name__ == "__main__":
 
     print(len(x_iterator))
 
+    z = "a b c d". split()
+    z_iterator = SequenceIterator(z)
+
+    print(x_iterator == z_iterator)
     print(x_iterator == y_iterator)
+
+
+
