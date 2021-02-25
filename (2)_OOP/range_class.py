@@ -44,6 +44,18 @@ class MyRangeClass:
 
         return self._start + k * self._step
 
+    def __contains__(self, item):
+        """Better implementation."""
+
+        if self._step == 1:
+            return self._start < item < self._length
+
+        if self._step == -1:
+            return self._start - self._length < item < self._start
+
+
+
+
 
 if __name__ == "__main__":
     r = MyRangeClass(5)
@@ -55,3 +67,10 @@ if __name__ == "__main__":
     print()
     for i in MyRangeClass(10, 0, -3):
         print(i, end=" - ")
+
+    p = MyRangeClass(start=10_000_000, stop=1, step=-1)
+    print("\nLength of p:", len(p))
+
+    print()
+    print(2 in p)
+    print(9_000_000 in p)
