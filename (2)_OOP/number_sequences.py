@@ -106,6 +106,20 @@ class FibonacciProgression(Progression):
         self._current, self._second = self._second, self._current + self._second
 
 
+class AbsoluteDifferenceProgression(Progression):
+    """Generates a sequence where the terms are the absolute value of difference of previous two values."""
+
+    def __init__(self, first=2, second=200):
+        """Construct a new sequence."""
+
+        super().__init__(first)
+        self._second = second
+
+    def _advance(self):
+        """Rule for generating the next term in the sequence."""
+        self._current, self._second = self._second, abs(self._current - self._second)
+
+
 if __name__ == "__main__":
     seq = Progression()
     seq.print_progression(5)
@@ -132,3 +146,8 @@ if __name__ == "__main__":
 
     fibonacci = FibonacciProgression(first=2, second=2)
     fibonacci.print_progression(8)
+
+    print("*" * 10)
+
+    abs_diff = AbsoluteDifferenceProgression()
+    abs_diff.print_progression(10)
