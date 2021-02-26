@@ -1,5 +1,13 @@
 """An implementation of a credit card, taken from the textbook.
 
+TO-DO: Implement minimum monthly payment method.
+
+A customer is assigned a minimum monthly payment, as a percentage of the
+balance.
+
+A late fee is assessed if the customer does not subsequently
+pay that minimum amount before the next monthly cycle.
+
 Created By: AJ Singh
 Date: Feb 9, 2021
 """
@@ -77,6 +85,11 @@ class CreditCard:
 
         self._balance -= amount
 
+    def _set_balance(self, b):
+        """A non-public method for sub-classes to change the balance, without directly accessing the
+        '_balance' data member."""
+        self._balance = b
+
 
 class PredatoryCreditCard(CreditCard):
     """An extension to the CreditCard class that incorporates compound interest and fees."""
@@ -129,6 +142,7 @@ class PredatoryCreditCard(CreditCard):
         # If number of charges is at least 10, add $1 to balance (for over use).
         if PredatoryCreditCard.num_charges >= 10:
             self._balance += 1
+        PredatoryCreditCard.num_charges = 0  # Reset for new month.
 
         # If minimum payment is not made, add a late fee to balance.
         min_payment = round(self._min_pay_percent * self._balance, 2)
