@@ -4,6 +4,8 @@ Created By: AJ Singh
 Date: Feb 13, 2021
 """
 
+from math import sqrt
+
 
 class Progression:
     """An iterator class to produce a generic progression.
@@ -120,6 +122,18 @@ class AbsoluteDifferenceProgression(Progression):
         self._current, self._second = self._second, abs(self._current - self._second)
 
 
+class SquareRootProgression(Progression):
+    """Generates a sequence of square root values."""
+
+    def __init__(self, first=65536):
+        """Construct a new sequence generator."""
+        super().__init__(first)
+
+    def _advance(self):
+        """Compute next term in the sequence."""
+        self._current = round(sqrt(self._current), 4)
+
+
 if __name__ == "__main__":
     seq = Progression()
     seq.print_progression(5)
@@ -151,3 +165,8 @@ if __name__ == "__main__":
 
     abs_diff = AbsoluteDifferenceProgression()
     abs_diff.print_progression(10)
+
+    print("*" * 10)
+
+    sqr_root_seq = SquareRootProgression(first = 1024)
+    sqr_root_seq.print_progression(10)
